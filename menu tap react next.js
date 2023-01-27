@@ -1,11 +1,22 @@
 import React, { useState } from "react";
-import RestaurantandcafeTap from "./restaurant.and.cafe";
 
-const MenuTabs = () => {
+export interface menunametap {
+  id?: string;
+  tap1?: string;
+  tap2?: string;
+  tap3?: string;
+  tap4?: string;
+  content1?: any;
+  content2?: any;
+  content3?: any;
+  content4?: any;
+}
+
+const MenuTaps = (props: menunametap) => {
   const [activeTab, setActiveTab] = useState(1);
 
   return (
-    <div className="relative">
+    <div id={props.id} className="relative">
       <div className="flex justify-between ">
         <button
           className={`py-[12px] w-[275px] inter-button border-solid border-b-[1px] uppercase hover:text-primary-redmaroon02 hover:border-b-primary-redmaroon02  ${
@@ -15,7 +26,7 @@ const MenuTabs = () => {
           }`}
           onClick={() => setActiveTab(1)}
         >
-          restaurant & cafe
+          {props.tap1}
         </button>
         <button
           className={`py-[12px] w-[275px] inter-button-2  border-solid border-b-[1px] uppercase hover:text-primary-redmaroon02 hover:border-b-primary-redmaroon02 ${
@@ -25,7 +36,7 @@ const MenuTabs = () => {
           }`}
           onClick={() => setActiveTab(2)}
         >
-          spa & massage
+          {props.tap2}
         </button>
         <button
           className={`py-[12px] w-[275px] inter-button-2  border-solid border-b-[1px] uppercase hover:text-primary-redmaroon02 hover:border-b-primary-redmaroon02 ${
@@ -35,7 +46,7 @@ const MenuTabs = () => {
           }`}
           onClick={() => setActiveTab(3)}
         >
-          swimming pool
+          {props.tap3}
         </button>
         <button
           className={`py-[12px] w-[275px] inter-button-2 border-solid border-b-[1px] uppercase hover:text-primary-redmaroon02 hover:border-b-primary-redmaroon02 ${
@@ -45,26 +56,17 @@ const MenuTabs = () => {
           }`}
           onClick={() => setActiveTab(4)}
         >
-          fitness
+          {props.tap4}
         </button>
       </div>
-
-      {activeTab === 1 && (
-        <div className="px-4 py-4 bg-white rounded-md mt-2">
-          <RestaurantandcafeTap />
-        </div>
-      )}
-      {activeTab === 2 && (
-        <div className="px-4 py-4 bg-white rounded-md mt-2">2</div>
-      )}
-      {activeTab === 3 && (
-        <div className="px-4 py-4 bg-white rounded-md mt-2">3</div>
-      )}
-      {activeTab === 4 && (
-        <div className="px-4 py-4 bg-white rounded-md mt-2">4</div>
-      )}
+      <div>
+        {activeTab === 1 && <div>{props.content1}</div>}
+        {activeTab === 2 && <div>{props.content2}</div>}
+        {activeTab === 3 && <div>{props.content3}</div>}
+        {activeTab === 4 && <div>{props.content4}</div>}
+      </div>
     </div>
   );
 };
 
-export default MenuTabs;
+export default MenuTaps;
